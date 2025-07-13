@@ -23,6 +23,7 @@
 ### 1. 下载脚本
 ```bash
 git clone https://github.com/lovefy-eth/nexus-run.git
+cd nexus-run
 ```
 
 ### 2. 添加执行权限
