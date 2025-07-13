@@ -21,7 +21,9 @@
 ## 安装和使用
 
 ### 1. 下载脚本
-确保脚本文件 `nexus_manager.sh` 与 `nexus` 可执行文件在同一目录下。
+```bash
+git clone https://github.com/lovefy-eth/nexus-run.git
+```
 
 ### 2. 添加执行权限
 ```bash
