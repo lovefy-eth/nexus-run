@@ -1,4 +1,5 @@
 {
-  "wallet_addr": "0x39cda4b0a6f06cd5349a3f4c6fd6dc05aed9b465",
-  "thread_count": 5
+  "wallet_addr": "0x39cDA4B0A6f06CD5349a3F4c6fd6Dc05aed9b465",
+  "thread_count": 5,
+  "pointer": 8
 }

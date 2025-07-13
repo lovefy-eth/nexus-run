@@ -9,7 +9,9 @@ NC='\033[0m' # No Color
 
 # 脚本标题
 echo -e "${BLUE}================================${NC}"
-echo -e "${BLUE}    Nexus 节点管理脚本${NC}"
+echo -e "${BLUE}    Nexus 刷分脚本${NC}"
+echo -e "${BLUE}================================${NC}"
+echo -e "${YELLOW}如需获取最新版本，请关注 https://x.com/lovefy520${NC}"
 echo -e "${BLUE}================================${NC}"
 
 # 检查并安装screen
@@ -33,9 +35,30 @@ check_and_install_screen() {
     fi
 }
 
+# 设置执行文件权限
+setup_permissions() {
+    echo -e "${YELLOW}设置执行文件权限...${NC}"
+    
+    # 检查并设置rust_nexus权限
+    if [[ -f "./rust_nexus" ]]; then
+        chmod +x ./rust_nexus
+        echo -e "${GREEN}rust_nexus权限设置完成${NC}"
+    else
+        echo -e "${YELLOW}rust_nexus文件不存在${NC}"
+    fi
+    
+    # 检查并设置nexus权限
+    if [[ -f "./nexus" ]]; then
+        chmod +x ./nexus
+        echo -e "${GREEN}nexus权限设置完成${NC}"
+    else
+        echo -e "${YELLOW}nexus文件不存在${NC}"
+    fi
+}
+
 # 设置钱包
 setup_wallet() {
-    echo -e "${YELLOW}请输入钱包地址:${NC}"
+    echo -e -n "${YELLOW}请输入钱包地址: ${NC}"
     read -r wallet_addr
     
     if [[ -z "$wallet_addr" ]]; then
@@ -58,7 +81,7 @@ EOF
 
 # 批量创建节点
 create_nodes() {
-    echo -e "${YELLOW}请输入要创建的节点数量 (最多每天50个):${NC}"
+    echo -e -n "${YELLOW}请输入要创建的节点数量 (最多每天50个): ${NC}"
     read -r node_count
     
     if [[ ! "$node_count" =~ ^[0-9]+$ ]]; then
@@ -132,7 +155,7 @@ view_tasks() {
         echo -e "1. 查看任务详情 (screen -r nexus_task)"
         echo -e "2. 停止任务 (screen -X -S nexus_task quit)"
         echo -e "3. 返回主菜单"
-        echo -e "${YELLOW}请选择操作 (1-3):${NC}"
+        echo -e -n "${YELLOW}请选择操作 (1-3): ${NC}"
         read -r choice
         
         case $choice in
@@ -166,11 +189,14 @@ show_menu() {
     echo -e "3. 启动任务"
     echo -e "4. 查看任务"
     echo -e "5. 退出"
-    echo -e "${YELLOW}请输入选择 (1-5):${NC}"
+    echo -e -n "${YELLOW}请输入选择 (1-5): ${NC}"
 }
 
 # 主程序
 main() {
+    # 设置执行文件权限
+    setup_permissions
+    
     # 检查并安装screen
     check_and_install_screen
     
@@ -200,7 +226,7 @@ main() {
                 ;;
         esac
         
-        echo -e "\n${BLUE}按回车键继续...${NC}"
+        echo -e -n "\n${BLUE}按回车键继续...${NC}"
         read -r
     done
 }

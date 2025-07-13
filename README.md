@@ -1,6 +1,8 @@
-# Nexus 节点管理脚本
+# Nexus 刷分脚本
 
-一个用于管理Nexus节点的bash脚本，提供钱包设置、节点创建、任务启动和监控功能。
+**作者**: @https://x.com/lovefy520
+
+一个用于Nexus刷分的bash脚本，提供钱包设置、节点创建、任务启动和监控功能。
 
 ## 功能特性
 
@@ -61,7 +63,7 @@ chmod +x nexus_manager.sh
 
 ```json
 {
-  "wallet_addr": "0x1A4787eB5E5656Df97728eBD34caB3a33835AfB7",
+  "wallet_addr": "0x1234567890abcdef1234567890abcdef12345678",
   "thread_count": 5
 }
 ```
